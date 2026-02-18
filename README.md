@@ -27,27 +27,27 @@ The approach is designed to work naturally with data from StatsBomb and integrat
 
 From our event data we want to assign player roles.
 
-![](team_events.png)
+![](imgs/team_events.png)
 
 1. For each player, fit a 2D Gaussian over their event locations
 
-![](team_gaussians.png)  
+![](imgs/team_gaussians.png)  
 
 2. Compute the team bounding box from player means
 
-![](bound_box.png)
+![](imgs/bound_box.png)
 
 3. Subdivide the box into an `5 × 5` grid  
 4. Assign each grid cell a role label  
 
-![](role_assignments.png)
+![](imgs/role_assignments.png)
 
 5. Estimate probability of a player occupying each zone  
 
-![](player_probs_map.png)
+![](imgs/player_probs_map.png)
 
 6. Select the most probable zone as the player’s role  
-![](player_roles.png)
+![](imgs/player_roles.png)
 
 --
 
