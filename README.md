@@ -1,6 +1,8 @@
 # ⚽ Position/Role Identification Algorithm
 
-This repository contains an algorithm for identifying soccer player roles and positional tendencies using event data. The method models each player's spatial behavior with Gaussian distributions, discretizes team shape into zones, and assigns the most probable role per player. It also supports comparing **in-possession** vs **out-of-possession** roles and visualizing role transitions.
+This repository contains an algorithm for identifying soccer player roles and positional tendencies using event data. While tracking data can accomplish this task quite easily and extremely well. Many leagues across the world still don't have access to reliable tracking data. However, positional scouting still needs to be done. So... How can we do positional scouting from event data. The method is described below.
+
+The method models each player's spatial behavior with Gaussian distributions, discretizes team shape into zones, and assigns the most probable role per player. It also supports comparing **in-possession** vs **out-of-possession** roles and visualizing role transitions.
 
 This approach was based off Hadi Sotudeh's approach to position identification using player tracking data: [hadisotudeh/analytics_cup_research](https://github.com/hadisotudeh/analytics_cup_research)
 
