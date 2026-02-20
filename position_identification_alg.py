@@ -8,8 +8,10 @@ def create_player_gaussian(player_match_events):
 
     mu = X.mean(axis=0) 
     Sigma = np.cov(X, rowvar=False)
+    eps = 1e-6
+    Sigma_reg = Sigma + np.eye(2) * eps
     
-    return mu, Sigma
+    return mu, Sigma_reg
 
 def find_box_bounds(player_dists, padding=0.0):
     """
@@ -46,13 +48,14 @@ def position_calculations(team_match_events):
     player_dists = []
     for player in team_match_events.player_id.unique():
         player_match_events = team_match_events[team_match_events.player_id==player]
-        mu, Sigma = create_player_gaussian(player_match_events)
-        
-        player_dist = pd.Series()
-        player_dist["player_id"] = player
-        player_dist["mu"] = mu
-        player_dist["sigma"] = Sigma
-        player_dists.append(player_dist)
+        if len(player_match_events) > 3:
+            mu, Sigma = create_player_gaussian(player_match_events)
+            
+            player_dist = pd.Series()
+            player_dist["player_id"] = player
+            player_dist["mu"] = mu
+            player_dist["sigma"] = Sigma
+            player_dists.append(player_dist)
     player_dists = pd.concat(player_dists,axis=1).T
     
     # Bound the player distributions
